@@ -1,30 +1,54 @@
-from flask import Flask
-import random
+# [START gae_python38_app]
 from bottle import post, request, route, run, static_file
+import random
 
-lista = [1,2,3,4,5,6,7,8,9,0]
-cantidad=5
+# lista = [1,2,3,4,5,6,7,8,9,0]
+archivo = {}
+presentes = []
+equipos = []
+cantidad = 5
 
+@route('/')
+def server_static(filepath='home.html'):
+    return static_file(filepath, root='./')
 
-# If `entrypoint` is not defined in app.yaml, App Engine will look for an app
-# called `app` in `main.py`.
-app = Flask(__name__)
-
-
-@app.route('/')
-def listar():
-    """Return a friendly HTTP greeting."""
-    while (len(lista)>=cantidad):
-        equipo=random.sample(lista,cantidad)
+def sortear():
+    #global lista
+    while len(presentes)>=cantidad:
+        equipo = random.sample(presentes, cantidad)
         for i in equipo:
-            lista.remove(i)
-    print(equipo)   
-    return 'OK'
+            presentes.remove(i)
+        equipos.append(equipo)
+        # print(equipo)
+        # print(lista)
 
+def leer_archivo():
+    # global archivo
+    with open('jugadores.txt',mode='r') as listado:
+        for i in listado:
+            # lista.append(i[:-1])
+            numero, nombre = i.partition(',')[::2]
+            # print(numero, nombre)
+            # lista.append({numero,nombre[:-1]})#, nombre)
+            archivo[numero]=nombre[:-1]
 
-if __name__ == '__main__':
-    # This is used when running locally only. When deploying to Google App
-    # Engine, a webserver process such as Gunicorn will serve the app. This
-    # can be configured by adding an `entrypoint` to app.yaml.
-    app.run(host='127.0.0.1', port=8080, debug=True)
+def cargar_lista():
+    for numero, jugador in archivo.items():
+        presentes.append(numero)
+
+def mostrar_equipos():
+    for i in equipos:
+        for j in i:
+            print (archivo[j], end='\t')
+        print('')
+            
+if __name__ == "__main__":
+    leer_archivo()
+    cargar_lista()
+    sortear()
+    if len(presentes)>0:
+        resto_del_mundo=presentes
+    mostrar_equipos()
+
+    # run(host='127.0.0.1', port=5000, debug=True)
 # [END gae_python38_app]
