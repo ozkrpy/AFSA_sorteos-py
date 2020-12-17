@@ -4,7 +4,6 @@ import forms
 from models import Jugador, Equipos
 from datetime import datetime
 import random
-
 import ast
 
 def recuperar_lista(equipos):
