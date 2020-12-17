@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block main %}
+<form action="{{ url_for('sorteo') }}" method="post">
+    <h1><strong>#NoAlChonguismo (v2.0)</strong></h1>
+    <hr>
+    {{ form.csrf_token }}
+    <div>
+        <div class="row align-items-center">
+            <div class="col-sm-2"><h3>Tipo de partido:</h3></div>
+            <div class="col-sm-0"><input type="radio" name="tipo_juego" id="option1" value="5" checked> 5v5 <br></div>
+            <div class="col-sm-1"><input type="radio" name="tipo_juego" id="option2" value="7"> 7v7 <br></div>
+        </div>
+        <hr>
+        <div class="row">
+            {% for players in jugadores | slice(2) %}
+            <div class="col-sm-3">
+                {% for jugador in players %}
+                    <input type="checkbox" value="{{ jugador.id }}" name='lista_presentes'> . {{ jugador.nombre }} (#{{ jugador.numero_camiseta }}) 
+                    <br>
+                {% endfor%}
+            </div>
+            {% endfor%}
+        </div>
+        <hr>
+        <div class="col">
+            {{ form.submit(class="btn btn-danger") }}
+        </div>
+    </div>
+</form>
+{% endblock %}
+

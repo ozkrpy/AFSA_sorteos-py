@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <h3>FECHAS</h3>
+    <br>
+    {% for equipo in equipos %}
+    <div class="row">
+        <div class="col-sm-2">
+            <h6>{{ equipo.id }}. {{ equipo.nombre }}</h6>
+        </div>
+        <div class="col-sm-0">
+            <a href="{{ url_for('detalles', equipos_id=equipo.id) }}"><i class="fa fa-tasks"></i></a>
+        </div>
+    </div>
+    {% endfor %}
+    <br>
+    <div>
+        <a href="{{ url_for('index') }}" class="btn btn-primary">Volver</a>
+    </div>
+{% endblock main %}

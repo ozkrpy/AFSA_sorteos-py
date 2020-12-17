@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="container-fluid">
+  <form action="{{ url_for('detalles', equipos_id=equipos_id) }}" method="post">
+    <h3>DISTRIBUCION DE LOS EQUIPOS</h3>
+    <h5>EQUIPOS DE LA FECHA: <i>{{ nombre }}</i></h5>
+    <div class="row">
+        {% for equipo in equipos %}
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <strong>Plantel:</strong>
+                        <div class="col">
+                            <ul>
+                                {% for i in equipo %}
+                                    <li> {{ i }} </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<br>
+<div>
+    <a href="{{ url_for('historico') }}" class="btn btn-primary">Volver</a>
+</div>
+  </form>
+</div>
+{% endblock %}

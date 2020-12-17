@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <h3>MIEMBROS REGISTRADOS</h3>
+    <br>
+    {% for jugador in jugadores %}
+    <div class="row">
+        <div class="col-sm-3">
+            <h6>{{ jugador.nombre }} (#{{ jugador.numero_camiseta }})</h6>
+        </div>
+        <div class="col-sm-0">
+            <a href="{{ url_for('edit', jugador_id=jugador.id) }}"><i class="fa fa-pencil-square-o"></i></a>
+            <a href="{{ url_for('delete', jugador_id=jugador.id) }}" style="color:red"><i class="fa fa-trash-o"></i></a>
+        </div>
+    </div>
+    {% endfor %}
+    <br>
+    <div>
+        <a href="{{ url_for('index') }}" class="btn btn-primary">Volver</a>
+    </div>
+
+{% endblock main %}
