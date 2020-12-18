@@ -1,4 +1,4 @@
-from app import app, db
+from main import app, db
 from flask import render_template, redirect, url_for, flash, get_flashed_messages, request
 import forms
 from models import Jugador, Equipos
