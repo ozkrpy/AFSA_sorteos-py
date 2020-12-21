@@ -4,10 +4,10 @@
 <form action="{{ url_for('sorteo') }}" method="post">
     {{ form.csrf_token }}
     <div>
-        <div class="row align-items-center">
-            <div class="col-sm-2"><h3>Tipo de partido:</h3></div>
-            <div class="col-sm-0"><input type="radio" name="tipo_juego" id="option1" value="5" checked> 5v5 <br></div>
-            <div class="col-sm-1"><input type="radio" name="tipo_juego" id="option2" value="7"> 7v7 <br></div>
+        <div class="d-flex flex-rowd-flex align-items-center">
+            <div class="p-2"><h3>Tipo de partido:</h3></div>
+            <div class="p-2"><input type="radio" name="tipo_juego" id="option1" value="5"><span>5v5</span></div>
+            <div class="p-2"><input type="radio" name="tipo_juego" id="option2" value="7" checked><span>7v7</span></div>
         </div>
         <hr>
         <div class="row">

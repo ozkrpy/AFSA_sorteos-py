@@ -1,18 +1,32 @@
 {% extends "base.html" %}
 
 {% block main %}
-    <h3>FECHAS</h3>
-    <br>
-    {% for equipo in equipos %}
-    <div class="row">
-        <div class="col-sm-2">
-            <h6>{{ equipo.id }}. {{ equipo.nombre }}</h6>
-        </div>
-        <div class="col-sm-0">
-            <a href="{{ url_for('detalles', equipos_id=equipo.id) }}"><i class="fa fa-tasks"></i></a>
-        </div>
+    <h3>TODAS LAS FECHAS</h3>
+    <hr>
+    <div class="d-flex flex-row d-flex align-items-center">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Detalles</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for equipo in equipos %}
+                <tr>
+                    <th scope="row">{{ equipo.id }}</th>
+                    <td>{{ equipo.nombre }}</td>
+                    <td class="align-self-end">
+                        <a href="{{ url_for('detalles', equipos_id=equipo.id) }}">
+                            <i class="fa fa-tasks"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-    {% endfor %}
     <br>
     <div>
         <a href="{{ url_for('index') }}" class="btn btn-primary">Volver</a>

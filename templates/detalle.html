@@ -4,6 +4,7 @@
 <div class="container-fluid">
   <form action="{{ url_for('detalles', equipos_id=equipos_id) }}" method="post">
     <h3>DISTRIBUCION DE LOS EQUIPOS</h3>
+    <hr>
     <h5>EQUIPOS DE LA FECHA: <i>{{ nombre }}</i></h5>
     <div class="row">
         {% for equipo in equipos %}

@@ -1,23 +1,24 @@
 {% extends "base.html" %}
 
 {% block main %}
-<div class="container-fluid">
-  <form action="{{ url_for('add') }}" method="post">
-    {{ form.csrf_token }}
+<form action="{{ url_for('add') }}" method="post">
+  {{ form.csrf_token }}
+    <div class="d-flex flex-rowd-flex align-items-center">
       <h3>AGREGAR NUEVO JUGADOR</h3>
-      <div class="row align-items-left">
-        <div class="col-sm-2">
-          {{ form.nombre.label }} {{ form.nombre(class="form-control") }}
-        </div>
-        <div class="col-sm-1">
-          {{ form.numero.label }} {{ form.numero(class="form-control") }}
-        </div>
+    </div>
+    <hr>
+    <div class="d-flex flex-row d-flex align-items-center">
+      <div class="p-2">
+        {{ form.nombre.label }} {{ form.nombre(class="form-control") }}
       </div>
-      <br>
-      <div>
-        {{ form.submit(class="btn btn-primary") }}
-        <a href="{{ url_for('index') }}" class="btn btn-danger">Cancelar</a>
+      <div class="p-2">
+        {{ form.numero.label }} {{ form.numero(class="form-control") }}
       </div>
-  </form>
-</div>
+    </div>
+    <br>
+    <div>
+      {{ form.submit(class="btn btn-primary") }}
+      <a href="{{ url_for('index') }}" class="btn btn-danger">Cancelar</a>
+    </div>
+</form>
 {% endblock %}
