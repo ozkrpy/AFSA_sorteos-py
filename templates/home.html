@@ -2,8 +2,6 @@
 
 {% block main %}
 <form action="{{ url_for('sorteo') }}" method="post">
-    <h1><strong>#NoAlChonguismo (v2.0)</strong></h1>
-    <hr>
     {{ form.csrf_token }}
     <div>
         <div class="row align-items-center">

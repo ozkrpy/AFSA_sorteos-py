@@ -11,7 +11,7 @@ db = SQLAlchemy(app)
 from routes import *   
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='192.168.100.31', debug=True)
 
 
 # [END gae_python38_app]
