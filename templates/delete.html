@@ -1,19 +1,17 @@
 {% extends "base.html" %}
 
 {% block main %}
-<div class="container-fluid">
-  <form action="{{ url_for('delete', jugador_id=jugador_id) }}" method="post">
-    {{ form.csrf_token }}
-    <h3>ELIMINAR JUGADOR</h3>
-    <div class="row align-items-left">
-      <div class="col-sm-2">
-        <p> {{ nombre }} </p>
-      </div>
+<form action="{{ url_for('delete', jugador_id=jugador_id) }}" method="post">
+  {{ form.csrf_token }}
+  <h3>ELIMINAR JUGADOR</h3>
+  <div class="row align-items-left">
+    <div class="col-sm-2">
+      <p> {{ nombre }} </p>
     </div>
-    <div>
-      {{ form.submit(class="btn btn-danger") }}
-      <a href="{{ url_for('index') }}" class="btn btn-primary">Cancelar</a>
-    </div>
-  </form>
-</div>
+  </div>
+  <div>
+    {{ form.submit(class="btn btn-danger") }}
+    <a href="{{ url_for('update') }}" class="btn btn-primary">Cancelar</a>
+  </div>
+</form>
 {% endblock %}

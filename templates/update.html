@@ -6,17 +6,19 @@
         <h3>MIEMBROS REGISTRADOS</h3>
     </div>
     <hr>
-    {% for jugador in jugadores %}
-    <div class="d-flex flex-row d-flex align-items-center">
-        <div class="p-2">
-            <h6>{{ jugador.nombre }} (#{{ jugador.numero_camiseta }})</h6>
-        </div>
-        <div class="p-2">
-            <a href="{{ url_for('edit', jugador_id=jugador.id) }}"><i class="fa fa-pencil-square-o"></i></a>
-            <a href="{{ url_for('delete', jugador_id=jugador.id) }}" style="color:red"><i class="fa fa-trash-o"></i></a>
-        </div>
-    </div>
-    {% endfor %}
+    <table class="table table-striped">
+        <tbody>
+            {% for jugador in jugadores %}
+            <tr>
+                <th scope="row">{{ jugador.nombre }} (#{{ jugador.numero_camiseta }})</th>
+                <td class="align-self-end">
+                    <a href="{{ url_for('edit', jugador_id=jugador.id) }}"><i class="fa fa-pencil-square-o"></i></a>
+                    <a href="{{ url_for('delete', jugador_id=jugador.id) }}" style="color:red"><i class="fa fa-trash-o"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     <br>
     <div>
         <a href="{{ url_for('index') }}" class="btn btn-primary">Volver</a>
