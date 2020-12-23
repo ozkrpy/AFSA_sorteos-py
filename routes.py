@@ -85,7 +85,7 @@ def sorteo():
             resto_del_mundo=lista
             equipos.append(resto_del_mundo)
             fecha = datetime.utcnow()
-            p = Equipos(nombre=fecha.strftime('%Y-%b-%d-%a'), listado=str(equipos), date=fecha)
+            p = Equipos(nombre=fecha.strftime('%Y-%b-%d-%A_%H%M'), listado=str(equipos), date=fecha)
             db.session.add(p)
             db.session.commit()
         presentes = recuperar_lista(equipos)
