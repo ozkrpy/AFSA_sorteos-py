@@ -5,6 +5,7 @@ from models import Jugador, Equipos
 from datetime import datetime
 import random
 import ast
+import pytz
 
 def recuperar_lista(equipos):
     distribuidos  = []
@@ -84,7 +85,7 @@ def sorteo():
         if len(lista)>0:
             resto_del_mundo=lista
             equipos.append(resto_del_mundo)
-            fecha = datetime.utcnow()
+            fecha = datetime.now(pytz.timezone('America/Asuncion'))
             p = Equipos(nombre=fecha.strftime('%Y-%b-%d-%A_%H%M'), listado=str(equipos), date=fecha)
             db.session.add(p)
             db.session.commit()
