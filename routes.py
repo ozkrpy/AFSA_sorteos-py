@@ -72,11 +72,10 @@ def delete(jugador_id):
 def sorteo():
     lista = []
     equipos = []
-    # form = forms.SortearForm()
     lista = request.form.getlist('lista_presentes')
-    cantidad = request.form['tipo_juego']
-    cantidad = int(cantidad)
-    if len(lista) > 0:
+    cantidad = request.form.get('tipo_juego')
+    if len(lista) > 0 and len(cantidad) > 0:
+        cantidad = int(cantidad)
         while len(lista)>=cantidad:
             equipo = random.sample(lista, cantidad)
             for i in equipo:
@@ -93,8 +92,7 @@ def sorteo():
         return  render_template('sorteo.html', tipo=cantidad, equipos=presentes)
     else:
         flash('Seleccione al menos un par de jugadores.')
-        return redirect(url_for('index'))
-    return redirect(url_for('sorteo'))
+    return redirect(url_for('index'))
 
 @app.route('/update', methods=['GET', 'POST'])
 def update():
