@@ -9,7 +9,8 @@ class Jugador(db.Model):
 
     # se va representar a si misma
     def __repr__(self):
-        return f'{self.nombre}(#{self.numero_camiseta})'
+        # return f'{self.nombre}(#{self.numero_camiseta})'
+        return f'j = Jugador(nombre="{self.nombre}", numero_camiseta="{self.numero_camiseta}", date=datetime.utcnow())  '
 
 class Equipos(db.Model):
     id = db.Column(db.Integer, primary_key=True)

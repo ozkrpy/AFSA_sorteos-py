@@ -1,11 +1,12 @@
 from main import app, db
 from flask import render_template, redirect, url_for, flash, get_flashed_messages, request
 import forms
-from models import Jugador, Equipos
 from datetime import datetime
 import random
 import ast
 import pytz
+
+from models import Jugador, Equipos
 
 def recuperar_lista(equipos):
     distribuidos  = []
@@ -21,6 +22,8 @@ def recuperar_lista(equipos):
 @app.route('/index', methods=['GET', 'POST'])
 def index():
     jugadores = Jugador.query.all()
+    print(jugadores)
+
     form = forms.SortearForm()
     return render_template('home.html', jugadores=jugadores, form=form)
 
